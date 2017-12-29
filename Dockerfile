@@ -2,9 +2,10 @@ FROM node:8.9.3
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
-RUN  npm i
+RUN  npm i yarn -g \
+  && yarn install
 # If you are building your code for production
 # RUN npm install --only=production
 
@@ -14,4 +15,4 @@ COPY . .
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "yarn", "run", "dev" ]
