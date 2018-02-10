@@ -7,10 +7,12 @@ module.exports = {
   },
   extends: 'standard',
   // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
+  plugins: ['html'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    indent: ['error', 2],
+    semi: ['error', 'never'],
+    'space-before-function-paren': 0
+  },
   globals: {}
 }
