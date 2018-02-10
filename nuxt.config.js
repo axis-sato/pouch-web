@@ -20,7 +20,15 @@ module.exports = {
   ** Add axios globally
   */
   build: {
-    vendor: ['axios'],
+    vendor: ['axios', 'buefy'],
+    // ref: https://github.com/nuxt/nuxt.js/issues/1670
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': {
+          warnings: false
+        }
+      }
+    },
     /*
     ** Run ESLINT on save
     */
@@ -34,5 +42,6 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: ['~plugins/buefy']
 }
