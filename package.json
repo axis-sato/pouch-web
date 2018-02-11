@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@nuxtjs/font-awesome": "^1.0.3",
     "axios": "^0.17.1",
     "buefy": "^0.6.3",
     "cross-env": "^5.1.3",
