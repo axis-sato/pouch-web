@@ -1,32 +1,60 @@
 <template>
   <section class="container">
     <h1 class="title">
-      USERS
+      My List
     </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="index" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-
-    <a class="button">foo</a>
+    <div v-for="articles in articles_array" class="tile is-ancestor">
+      <div v-for="article in articles" class="tile is-parent is-4">
+        <article class="tile is-child box">
+          <p class="title">
+            <a :href="article.url" target="_blank">
+              {{article.title}}
+            </a>
+          </p>
+          <p class="subtitle">With an image</p>
+          <figure class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/640x480.png">
+          </figure>
+        </article>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import axios from '~/plugins/axios'
+// import axios from '~/plugins/axios'
 
 export default {
   async asyncData() {
-    let { data } = await axios.get('/api/users')
-    return { users: data }
+    const articlesArray = [
+      [
+        { title: 'title1', url: 'https://google.com', image_path: '' },
+        { title: 'title2', url: 'https://facebook.com', image_path: '' },
+        { title: 'title3', url: 'https://yahoo.com', image_path: '' }
+      ],
+      [
+        { title: 'title4', url: 'https://twitter.com', image_path: '' },
+        { title: 'title5', url: 'https://instagram.com', image_path: '' }
+      ]
+    ]
+    return { articles_array: articlesArray }
   },
   head() {
     return {
-      title: 'Users'
+      title: 'Top'
     }
   }
 }
 </script>
+
+<style scoped>
+.container {
+  padding: 10px 0px;
+}
+
+/* disable links coloring */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+</style>
