@@ -8,21 +8,7 @@
         <h1 class="title">
           My List
         </h1>
-        <div v-for="articles in articles_array" class="tile is-ancestor">
-          <div v-for="article in articles" class="tile is-parent is-4">
-            <article class="tile is-child box">
-              <p class="title">
-                <a :href="article.url" target="_blank">
-                  {{article.title}}
-                </a>
-              </p>
-              <p class="subtitle">With an image</p>
-              <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/640x480.png">
-              </figure>
-            </article>
-          </div>
-        </div>
+        <articles :articles_array="articles_array" />
       </div>
     </div>
   </section>
@@ -31,6 +17,7 @@
 <script>
 // import axios from '~/plugins/axios'
 import Tags from '~/components/Tags.vue'
+import Articles from '~/components/Articles.vue'
 
 export default {
   async asyncData() {
@@ -58,7 +45,8 @@ export default {
     }
   },
   components: {
-    Tags
+    Tags,
+    Articles
   }
 }
 </script>
@@ -66,11 +54,5 @@ export default {
 <style scoped>
 .container {
   padding: 10px 0px;
-}
-
-/* disable links coloring */
-a {
-  color: inherit;
-  text-decoration: none;
 }
 </style>
