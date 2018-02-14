@@ -12,6 +12,7 @@
             <figure class="image is-4by3">
               <img src="https://bulma.io/images/placeholders/640x480.png">
             </figure>
+            <read-button />
           </article>
         </div>
       </div>
@@ -19,8 +20,12 @@
 </template>
 
 <script>
+import ReadButton from '~/components/ReadButton.vue'
 export default {
-  props: ['articles_array']
+  props: ['articles_array'],
+  components: {
+    ReadButton
+  }
 }
 </script>
 
@@ -29,5 +34,11 @@ export default {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+read-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
 </style>
