@@ -13,15 +13,29 @@
                      type="search"
                      icon="search">
             </b-input>
-            <a class="button">
-              <b-icon
-                icon="sync-alt"
-                custom-class="fa-plus">
-              </b-icon>
-            </a>
+            <b-dropdown position="is-bottom-left">
+              <a class="button" slot="trigger">
+                <b-icon
+                  icon="sync-alt"
+                  custom-class="fa-plus">
+                </b-icon>
+              </a>
+
+              <b-dropdown-item custom paddingless>
+                <article-additional />
+              </b-dropdown-item>
+            </b-dropdown>
           </div>
         </div>
       </div>
     </nav>
   </header>
 </template>
+
+<script>
+import ArticleAdditional from '~/components/ArticleAdditional.vue'
+
+export default {
+  components: { ArticleAdditional }
+}
+</script>
