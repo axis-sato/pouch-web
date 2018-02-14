@@ -12,7 +12,10 @@
             <figure class="image is-4by3">
               <img src="https://bulma.io/images/placeholders/640x480.png">
             </figure>
-            <read-button />
+            <div class="article-menu">
+              <edit-button />
+              <read-button />
+            </div>
           </article>
         </div>
       </div>
@@ -20,10 +23,12 @@
 </template>
 
 <script>
+import EditButton from '~/components/EditButton.vue'
 import ReadButton from '~/components/ReadButton.vue'
 export default {
   props: ['articles_array'],
   components: {
+    EditButton,
     ReadButton
   }
 }
@@ -36,7 +41,7 @@ a {
   text-decoration: none;
 }
 
-read-button {
+.article-menu {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
