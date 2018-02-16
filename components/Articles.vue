@@ -13,7 +13,7 @@
               <img src="https://bulma.io/images/placeholders/640x480.png">
             </figure>
             <div class="article-menu">
-              <edit-button />
+              <edit-button :article_id="article.id" />
               <read-button />
             </div>
           </article>

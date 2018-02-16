@@ -23,13 +23,13 @@ export default {
   async asyncData() {
     const articlesArray = [
       [
-        { title: 'title1', url: 'https://google.com', image_path: '' },
-        { title: 'title2', url: 'https://facebook.com', image_path: '' },
-        { title: 'title3', url: 'https://yahoo.com', image_path: '' }
+        { id: 1, title: 'title1', url: 'https://google.com', image_path: '' },
+        { id: 2, title: 'title2', url: 'https://facebook.com', image_path: '' },
+        { id: 3, title: 'title3', url: 'https://yahoo.com', image_path: '' }
       ],
       [
-        { title: 'title4', url: 'https://twitter.com', image_path: '' },
-        { title: 'title5', url: 'https://instagram.com', image_path: '' }
+        { id: 4, title: 'title4', url: 'https://twitter.com', image_path: '' },
+        { id: 5, title: 'title5', url: 'https://instagram.com', image_path: '' }
       ]
     ]
     const tags = [
