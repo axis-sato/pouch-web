@@ -2,10 +2,12 @@
   <section class="container">
     <a :href="article.url" target="_blank" class="title">{{article.title}}</a>
     <img :src="article.image_path" alt="">
+    <tag-field />
   </section>
 </template>
 
 <script>
+import TagField from '~/components/TagField.vue'
 export default {
   name: 'article',
   async asyncData() {
@@ -24,6 +26,9 @@ export default {
     return {
       title: `${this.article.title}`
     }
+  },
+  components: {
+    TagField
   }
 }
 </script>
