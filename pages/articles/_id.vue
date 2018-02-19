@@ -3,11 +3,13 @@
     <a :href="article.url" target="_blank" class="title">{{article.title}}</a>
     <img :src="article.image_path" alt="">
     <tag-field />
+    <comment-field />
   </section>
 </template>
 
 <script>
 import TagField from '~/components/TagField.vue'
+import CommentField from '~/components/CommentField.vue'
 export default {
   name: 'article',
   async asyncData() {
@@ -28,7 +30,8 @@ export default {
     }
   },
   components: {
-    TagField
+    TagField,
+    CommentField
   }
 }
 </script>
@@ -49,5 +52,8 @@ img {
   width: 100%;
   margin: 20px auto;
   display: block;
+}
+tag-field comment-field {
+  margin: 10px;
 }
 </style>

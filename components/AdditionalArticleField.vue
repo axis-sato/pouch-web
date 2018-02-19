@@ -1,5 +1,5 @@
 <template>
-  <article-additional>
+  <additional-article-filed>
     <form action="">
       <div class="modal-card">
         <section class="modal-card-body">
@@ -14,8 +14,12 @@
         </section>
       </div>
     </form>
-  </article-additional>
+  </additional-article-filed>
 </template>
+
+<script>
+export default {}
+</script>
 
 <style scoped>
 .modal-card {

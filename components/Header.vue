@@ -22,7 +22,7 @@
               </a>
 
               <b-dropdown-item custom paddingless>
-                <article-additional />
+                <additional-article-field />
               </b-dropdown-item>
             </b-dropdown>
           </div>
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import ArticleAdditional from '~/components/ArticleAdditional.vue'
+import AdditionalArticleField from '~/components/AdditionalArticleField.vue'
 
 export default {
-  components: { ArticleAdditional }
+  components: { AdditionalArticleField }
 }
 </script>
