@@ -11,7 +11,6 @@
 import TagField from '~/components/TagField.vue'
 import CommentField from '~/components/CommentField.vue'
 export default {
-  name: 'article',
   async asyncData() {
     return {
       article: {
