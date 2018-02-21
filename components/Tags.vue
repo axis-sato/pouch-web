@@ -1,11 +1,9 @@
 <template>
-  <tags>
-    <ul>
-      <li v-for="tag in tags">
-        {{tag.name}}
-      </li>
-    </ul>
-  </tags>
+  <ul>
+    <li v-for="tag in tags">
+      {{tag.name}}
+    </li>
+  </ul>
 </template>
 
 <script>
