@@ -1,7 +1,7 @@
 <template>
   <div>
     <pouch-header/>
-    <nuxt/>
+    <nuxt class="main"/>
     <pouch-footer/>
   </div>
 </template>
@@ -17,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
