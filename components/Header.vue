@@ -8,7 +8,7 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="field is-grouped">
+          <div v-if="isHeaderShown" class="field is-grouped">
             <b-input placeholder="Search..."
                      type="search"
                      icon="search">
@@ -36,6 +36,11 @@
 import AdditionalArticleField from '~/components/AdditionalArticleField.vue'
 
 export default {
-  components: { AdditionalArticleField }
+  components: { AdditionalArticleField },
+  computed: {
+    isHeaderShown() {
+      return this.$route.name === 'index'
+    }
+  }
 }
 </script>
