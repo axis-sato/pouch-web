@@ -2,18 +2,15 @@
   <div>
     <pouch-header/>
     <nuxt class="main"/>
-    <pouch-footer/>
   </div>
 </template>
 
 <script>
 import PouchHeader from '~/components/Header.vue'
-import PouchFooter from '~/components/Footer.vue'
 
 export default {
   components: {
-    PouchHeader,
-    PouchFooter
+    PouchHeader
   }
 }
 </script>
