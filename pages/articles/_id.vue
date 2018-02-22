@@ -4,12 +4,14 @@
     <img :src="article.image_path" alt="">
     <tag-field />
     <comment-field />
+    <save-button />
   </section>
 </template>
 
 <script>
 import TagField from '~/components/TagField.vue'
 import CommentField from '~/components/CommentField.vue'
+import SaveButton from '~/components/SaveButton.vue'
 export default {
   async asyncData() {
     return {
@@ -30,7 +32,8 @@ export default {
   },
   components: {
     TagField,
-    CommentField
+    CommentField,
+    SaveButton
   }
 }
 </script>
