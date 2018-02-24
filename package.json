@@ -5,7 +5,7 @@
   "author": "c8112002 <c8112002@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "backpack dev",
+    "dev": "HOST=0.0.0.0 backpack dev",
     "build": "nuxt build && backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "precommit": "lint-staged",
