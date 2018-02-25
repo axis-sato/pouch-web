@@ -10,8 +10,6 @@ module.exports = {
   plugins: ['html'],
   // add your custom rules here
   rules: {
-    indent: ['error', 2],
-    semi: ['error', 'never'],
     'space-before-function-paren': 0
   },
   globals: {}
