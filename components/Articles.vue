@@ -1,6 +1,7 @@
 <template>
   <section>
-    <div v-for="articles in articles_array" class="tile is-ancestor">
+    <a class="button" @click="addArticle" >add</a>
+    <div v-for="articles in articlesList" class="tile is-ancestor">
       <div v-for="article in articles" class="tile is-parent is-4">
         <article class="tile is-child box">
           <p class="title">
@@ -26,10 +27,29 @@
 import EditButton from '~/components/EditButton.vue'
 import ReadButton from '~/components/ReadButton.vue'
 export default {
-  props: ['articles_array'],
   components: {
     EditButton,
     ReadButton
+  },
+  computed: {
+    articlesList() {
+      const articles = this.$store.state.articles.list
+      let articlesList = []
+      let tmpArticles = []
+      for (let [index, article] of articles.entries()) {
+        tmpArticles.push(article)
+        if (index % 3 === 2) {
+          articlesList.push(tmpArticles)
+          tmpArticles = []
+        }
+      }
+      return articlesList
+    }
+  },
+  methods: {
+    addArticle(e) {
+      this.$store.commit('articles/add', 'title', 'url')
+    }
   }
 }
 </script>
