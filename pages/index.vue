@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import axios from '~/plugins/axios'
 import Tags from '~/components/Tags.vue'
 import Articles from '~/components/Articles.vue'
+import APIClient from '~/api/client'
 
 export default {
   async asyncData({ store }) {
@@ -29,11 +29,8 @@ export default {
     return { tags: tags }
   },
   async fetch({ store, params }) {
-    const { data } = await axios.get(
-      'http://localhost:8888/v1/articles?limit=4&first_cursor=5'
-    )
-    console.log(data)
-    const articles = data
+    const apiClient = new APIClient()
+    const articles = await apiClient.fetchArticles()
     store.commit('articles/set', articles)
   },
   head() {
