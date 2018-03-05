@@ -26,25 +26,16 @@
 <script>
 import EditButton from '~/components/EditButton.vue'
 import ReadButton from '~/components/ReadButton.vue'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     EditButton,
     ReadButton
   },
   computed: {
-    articlesList() {
-      const articles = this.$store.state.articles.list
-      let articlesList = []
-      let tmpArticles = []
-      for (let [index, article] of articles.entries()) {
-        tmpArticles.push(article)
-        if (index % 3 === 2) {
-          articlesList.push(tmpArticles)
-          tmpArticles = []
-        }
-      }
-      return articlesList
-    }
+    ...mapGetters({
+      articlesList: 'articles/articlesList'
+    })
   },
   methods: {
     addArticle(e) {
