@@ -44,5 +44,5 @@ module.exports = {
     }
   },
   modules: ['@nuxtjs/font-awesome'],
-  plugins: ['~plugins/buefy']
+  plugins: ['~plugins/buefy', '~plugins/infinite-scroll']
 }
