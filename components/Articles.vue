@@ -9,10 +9,11 @@
               {{article.title}}
             </a>
           </p>
-          <p class="subtitle">With an image</p>
-          <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/640x480.png">
-          </figure>
+          <a :href="article.url" target="_blank">
+            <figure class="image is-4by3">
+              <img :src="imagePath(article)">
+            </figure>
+          </a>
           <div class="article-menu">
             <edit-button :article_id="article.id" />
             <read-button />
@@ -40,6 +41,11 @@ export default {
   methods: {
     addArticle(e) {
       this.$store.commit('articles/add', 'title', 'url')
+    },
+    imagePath(article) {
+      return article.imagePath
+        ? article.imagePath
+        : 'https://bulma.io/images/placeholders/640x480.png'
     }
   }
 }
