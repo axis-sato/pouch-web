@@ -1,6 +1,5 @@
 <template>
   <section>
-    <a class="button" @click="addArticle" >add</a>
     <div v-for="articles in articlesList" class="tile is-ancestor">
       <div v-for="article in articles" class="tile is-parent is-4">
         <article class="tile is-child box">
@@ -35,13 +34,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      articlesList: 'articles/articlesList'
+      articlesList: 'articles/articlesList',
+      currentLastArticleId: 'articles/currentLastArticleId'
     })
   },
   methods: {
-    addArticle(e) {
-      this.$store.commit('articles/add', 'title', 'url')
-    },
     imagePath(article) {
       return article.imagePath
         ? article.imagePath

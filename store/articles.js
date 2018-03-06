@@ -3,6 +3,10 @@ export const state = () => ({
 })
 
 export const getters = {
+  /**
+   * @param state
+   * @return {array}
+   */
   articlesList(state) {
     const articles = state.list
     const articleSizePerLine = 3
@@ -13,19 +17,50 @@ export const getters = {
       articlesList.push(slicedArticles)
     }
     return articlesList
+  },
+  /**
+   * @param state
+   * @return {int}
+   */
+  currentArticleLength(state) {
+    return state.list.length
+  },
+  /**
+   * @param state
+   * @param getters
+   * @return {null|int}
+   */
+  currentLastArticleId(state, getters) {
+    if (getters.currentArticleLength === 0) {
+      return null
+    }
+    const lastArticle = state.list[getters.currentArticleLength - 1]
+    return lastArticle.id
+  },
+  /**
+   * @param state
+   * @param getters
+   * @return {null|int}
+   */
+  nextArticleId(state, getters) {
+    if (getters.currentLastArticleId === null) {
+      return null
+    }
+    const nextId = getters.currentLastArticleId - 1
+    return nextId > 0 ? nextId : null
+  },
+  /**
+   * @param state
+   * @param getters
+   * @return boolean
+   */
+  existsNext(state, getters) {
+    return getters.nextArticleId !== null
   }
 }
 
 export const mutations = {
-  set(state, articles) {
-    state.list = articles
-  },
-  add(state, title, url) {
-    state.list.push({
-      id: 1,
-      title: title,
-      url: url,
-      image_path: ''
-    })
+  push(state, articles) {
+    state.list = state.list.concat(articles)
   }
 }

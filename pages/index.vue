@@ -8,7 +8,7 @@
         <h1 class="title">
           My List
         </h1>
-        <articles />
+        <articles v-infinite-scroll="moreArticles" infinite-scroll-disabled="isScrollDisabled" infinite-scroll-distance="10"/>
       </div>
     </div>
   </section>
@@ -18,6 +18,7 @@
 import Tags from '~/components/Tags.vue'
 import Articles from '~/components/Articles.vue'
 import APIClient from '~/api/client'
+import { mapGetters } from 'vuex'
 
 export default {
   async asyncData({ store }) {
@@ -31,7 +32,7 @@ export default {
   async fetch({ store, params }) {
     const apiClient = new APIClient()
     const articles = await apiClient.fetchArticles()
-    store.commit('articles/set', articles)
+    store.commit('articles/push', articles)
   },
   head() {
     return {
@@ -41,6 +42,22 @@ export default {
   components: {
     Tags,
     Articles
+  },
+  computed: {
+    ...mapGetters({
+      nextArticleId: 'articles/nextArticleId',
+      existsNext: 'articles/existsNext'
+    }),
+    isScrollDisabled() {
+      return !this.existsNext
+    }
+  },
+  methods: {
+    async moreArticles() {
+      const apiClient = new APIClient()
+      const articles = await apiClient.fetchArticles(this.nextArticleId)
+      this.$store.commit('articles/push', articles)
+    }
   }
 }
 </script>
