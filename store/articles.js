@@ -1,3 +1,5 @@
+import APIClient from '~/api/client'
+
 export const state = () => ({
   list: []
 })
@@ -56,6 +58,14 @@ export const getters = {
    */
   existsNext(state, getters) {
     return getters.nextArticleId !== null
+  }
+}
+
+export const actions = {
+  async fetchArticles({ commit, getters }) {
+    const apiClient = new APIClient()
+    const articles = await apiClient.fetchArticles(getters.nextArticleId)
+    commit('push', articles)
   }
 }
 

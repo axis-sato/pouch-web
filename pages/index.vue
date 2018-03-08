@@ -17,7 +17,6 @@
 <script>
 import Tags from '~/components/Tags.vue'
 import Articles from '~/components/Articles.vue'
-import APIClient from '~/api/client'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -30,9 +29,7 @@ export default {
     return { tags: tags }
   },
   async fetch({ store, params }) {
-    const apiClient = new APIClient()
-    const articles = await apiClient.fetchArticles()
-    store.commit('articles/push', articles)
+    await store.dispatch('articles/fetchArticles')
   },
   head() {
     return {
@@ -45,7 +42,6 @@ export default {
   },
   computed: {
     ...mapGetters({
-      nextArticleId: 'articles/nextArticleId',
       existsNext: 'articles/existsNext'
     }),
     isScrollDisabled() {
@@ -54,9 +50,7 @@ export default {
   },
   methods: {
     async moreArticles() {
-      const apiClient = new APIClient()
-      const articles = await apiClient.fetchArticles(this.nextArticleId)
-      this.$store.commit('articles/push', articles)
+      await this.$store.dispatch('articles/fetchArticles')
     }
   }
 }
