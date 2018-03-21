@@ -17,4 +17,14 @@ export default class APIClient {
     console.log(data)
     return data
   }
+
+  /**
+   * @param {string} url
+   * @return {Promise<void>}
+   */
+  async addArticle(url) {
+    const { data } = await axios.post(`${endpoint}/article`, { url })
+    console.log(data)
+    return data
+  }
 }
